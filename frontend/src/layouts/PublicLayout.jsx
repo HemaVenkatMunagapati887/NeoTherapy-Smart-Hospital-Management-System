@@ -26,12 +26,12 @@ export default function PublicLayout() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-primary, #F5F1EC)' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(240,249,255,1) 50%, rgba(240,254,250,1) 100%)' }}>
       <Navbar />
       <main className="flex-1">
         <Outlet />
       </main>
-      <footer className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      <footer className="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-3">

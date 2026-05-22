@@ -80,7 +80,7 @@ export default function DoctorLayout() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
       {/* FIXED SIDEBAR */}
       <div className="hidden lg:block w-64 fixed left-0 top-0 h-screen border-r border-gray-200 bg-white">
         <Sidebar mobileOpen={false} onClose={null} />
@@ -97,7 +97,7 @@ export default function DoctorLayout() {
       )}
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 flex flex-col lg:ml-64">
+      <div className="flex-1 flex flex-col lg:ml-64 bg-gradient-to-b from-indigo-50/40 via-white/50 to-blue-50/40">
         {/* PROFESSIONAL HEADER */}
         <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
           <div className="px-6 py-4 flex items-center justify-between">

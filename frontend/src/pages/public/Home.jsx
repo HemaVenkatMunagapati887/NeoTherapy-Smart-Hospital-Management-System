@@ -4,9 +4,10 @@ import {
   Heart, Brain, Bone, Baby, Eye, Stethoscope,
   Star, ArrowRight, CheckCircle, Shield, Clock, Smartphone,
   CalendarCheck, ClipboardList, UserCheck, ChevronRight, MapPin,
-  UserRound, Loader2, Hospital, ArrowDown, ArrowUp
+  UserRound, Loader2, Hospital
 } from 'lucide-react'
 import api from '../../services/api'
+import doctorBg from '../../assets/images/doctor-background.jpg'
 
 const services = [
   { icon: Heart, title: 'Cardiology', desc: 'Heart conditions, ECG & cardiovascular care', color: 'bg-red-50 text-red-600', wiki: 'https://en.wikipedia.org/wiki/Cardiology' },
@@ -49,7 +50,6 @@ export default function Home() {
 
   // Presentation Scroll Navigation - Refactored to allow natural scrolling
   const [isAtTop, setIsAtTop] = useState(true);
-  const [isScrollUnlocked, setIsScrollUnlocked] = useState(false);
   const isScrolling = useRef(false);
 
   useEffect(() => {
@@ -60,7 +60,6 @@ export default function Home() {
       if (isScrolling.current) return;
       const atTop = window.scrollY < 50;
       setIsAtTop(atTop);
-      setIsScrollUnlocked(!atTop);
     };
     
     // Initial check
@@ -73,34 +72,6 @@ export default function Home() {
       document.body.style.overflow = 'auto';
     };
   }, []);
-
-  const handleScrollDown = () => {
-    if (isScrolling.current) return;
-    const target = document.getElementById('services');
-    if (!target) return;
-
-    isScrolling.current = true;
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    setTimeout(() => {
-      setIsScrollUnlocked(true);
-      setIsAtTop(false);
-      isScrolling.current = false;
-    }, 600);
-  };
-
-  const handleScrollUp = () => {
-    if (isScrolling.current) return;
-
-    isScrolling.current = true;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    setTimeout(() => {
-      setIsScrollUnlocked(false);
-      setIsAtTop(true);
-      isScrolling.current = false;
-    }, 600);
-  };
 
   useEffect(() => {
     // Fetch real doctors dynamic
@@ -134,15 +105,15 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section id="hero" className="relative overflow-hidden bg-[var(--bg-primary)] text-[var(--text-primary)] flex items-center" style={{ minHeight: 'calc(100vh - 70px)' }}>
+      <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-blue-100 to-gray-50 text-[var(--text-primary)] flex items-center" style={{ minHeight: 'calc(100vh - 70px)' }}>
         {/* Abstract Background Shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Main soft shapes */}
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-accent)] rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob" />
-          <div className="absolute top-[20%] right-[-10%] w-[45%] h-[60%] bg-gradient-to-tr from-[#E6DCC3] to-[#F1E9D8] rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-blob animation-delay-2000" />
-          <div className="absolute bottom-[-20%] left-[20%] w-[60%] h-[60%] bg-gradient-to-t from-[var(--bg-secondary)] to-transparent rounded-full mix-blend-multiply filter blur-[100px] opacity-60 animate-blob animation-delay-4000" />
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] bg-gradient-to-br from-blue-100 to-blue-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob" />
+          <div className="absolute top-[20%] right-[-10%] w-[45%] h-[60%] bg-gradient-to-tr from-blue-100 to-indigo-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob animation-delay-2000" />
+          <div className="absolute bottom-[-20%] left-[20%] w-[60%] h-[60%] bg-gradient-to-t from-blue-100 to-transparent rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob animation-delay-4000" />
           {/* Soft highlight overlay */}
-          <div className="absolute inset-0 bg-white/30 backdrop-blur-[100px]" /> 
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[100px]" /> 
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16 grid md:grid-cols-2 gap-12 items-center">
@@ -183,7 +154,7 @@ export default function Home() {
 
           {/* Hero Visual Live Data Sync */}
           <div className="hidden md:block">
-            <div className="relative bg-[var(--glass)] rounded-[2rem] p-8 border border-white/50 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+            <div className="relative bg-cover bg-center rounded-[2rem] p-8 border border-white/50 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.08)]" style={{backgroundImage: `url(${doctorBg})`}}>
               {/* Highlight layer */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent rounded-[2rem] pointer-events-none" />
               
@@ -194,13 +165,13 @@ export default function Home() {
                   { label: 'Real Patients', value: `${stats.patients}`, icon: ClipboardList, color: 'text-gray-700' },
                   { label: 'Patient Rating', value: '4.9★', icon: Star, color: 'text-gray-700' },
                 ].map(s => (
-                  <div key={s.label} className="bg-white/50 rounded-2xl p-5 border border-white/60 backdrop-blur-md hover:-translate-y-1 transition-transform duration-300 shadow-sm relative overflow-hidden group">
+                  <div key={s.label} className="bg-white/20 rounded-2xl p-5 border border-white/30 backdrop-blur-md hover:-translate-y-1 transition-transform duration-300 shadow-sm relative overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    <div className="w-10 h-10 rounded-xl bg-white/70 flex items-center justify-center mb-3 shadow-sm border border-white/50">
-                      <s.icon size={20} className={s.color} />
+                    <div className="w-10 h-10 rounded-xl bg-white/40 flex items-center justify-center mb-3 shadow-sm border border-white/50">
+                      <s.icon size={20} className="text-gray-800" />
                     </div>
-                    <p className="text-2xl font-bold text-[var(--text-primary)] mt-1">{s.value}</p>
-                    <p className="text-xs font-semibold text-[var(--text-secondary)] mt-1">{s.label}</p>
+                    <p className="text-2xl font-bold text-gray-900 mt-1">{s.value}</p>
+                    <p className="text-xs font-semibold text-gray-700 mt-1">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -208,28 +179,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Down Control at Hero */}
-        <div 
-          onClick={handleScrollDown} 
-          className={`absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer z-20 group transition-opacity duration-500 ${!isScrollUnlocked ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-        >
-          <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--text-secondary)] uppercase">Click here to see below</span>
-          <div className="w-10 h-10 rounded-full bg-[var(--glass)] border border-[var(--border-soft)] flex items-center justify-center shadow-[var(--shadow-soft)] backdrop-blur-md transition-all group-hover:bg-white/60">
-            <ArrowDown size={18} className="text-[var(--text-primary)]" />
-          </div>
-        </div>
       </section>
-
-      {/* Scroll Up Control at Top Center */}
-      <div 
-        onClick={handleScrollUp}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer z-50 group transition-all duration-500 ${isScrollUnlocked ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'}`}
-      >
-        <div className="w-10 h-10 rounded-full bg-[var(--glass)] border border-[var(--border-soft)] flex items-center justify-center shadow-[var(--shadow-soft)] backdrop-blur-md transition-all group-hover:bg-white/60">
-          <ArrowUp size={18} className="text-[var(--text-primary)]" />
-        </div>
-        <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--text-secondary)] uppercase">Click here to go up</span>
-      </div>
 
       {/* Stats Bar (Dynamic!) */}
       <section id="stats" className="bg-white border-b border-[var(--border-soft)]">
@@ -344,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section id="features" className="bg-gradient-to-br from-[#1F1F1F] to-[#0A0A0A] py-16">
+      <section id="features" className="bg-gradient-to-b from-slate-900 via-indigo-900 to-blue-900 py-16 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <span className="text-blue-200 text-xs font-bold uppercase tracking-widest">Why NeoTherapy</span>

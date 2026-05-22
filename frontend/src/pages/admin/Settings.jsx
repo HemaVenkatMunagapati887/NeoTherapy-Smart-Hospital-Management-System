@@ -38,7 +38,7 @@ export default function AdminSettings() {
 
     const [appearance, setAppearance] = useState({
         theme: theme,
-        primaryColor: '#2563EB',
+        primaryColor: '#1e3a8a',
         language: 'English',
         timezone: 'Asia/Kolkata',
     })

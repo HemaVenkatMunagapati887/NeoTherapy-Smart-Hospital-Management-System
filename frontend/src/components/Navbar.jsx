@@ -17,8 +17,8 @@ export default function Navbar() {
   const navClass = (to) =>
     `px-3 py-2 text-sm font-medium rounded-[10px] transition-all duration-200 ${
       pathname === to
-        ? 'bg-[#EAE4DD] text-[#2B2B2B]'
-        : 'text-gray-600 hover:bg-[#F0EBE5] hover:text-[#2B2B2B]'
+        ? 'bg-blue-100 text-blue-900'
+        : 'text-gray-600 hover:bg-slate-100 hover:text-blue-900'
     }`
 
   return (

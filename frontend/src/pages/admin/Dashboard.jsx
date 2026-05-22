@@ -49,9 +49,9 @@ export default function AdminDashboard() {
   const maxDept = deptStats.length ? Math.max(...deptStats.map(d => d.count), 1) : 1
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-fadeIn bg-gradient-to-br from-slate-900/5 via-blue-900/5 to-indigo-900/5 p-6 rounded-xl">
       {/* Welcome */}
-      <div className="bg-gradient-to-r from-violet-600 to-violet-800 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-indigo-700 via-purple-600 to-blue-700 rounded-2xl p-6 text-white shadow-2xl">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-violet-300 text-sm">Admin Control Panel</p>
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
             </div>
             <button
               onClick={fetchStats}
-              className="flex items-center gap-1.5 text-violet-200 hover:text-white text-xs bg-violet-700 hover:bg-violet-600 px-3 py-1.5 rounded-lg transition-all"
+              className="flex items-center gap-1.5 text-indigo-200 hover:text-white text-xs bg-indigo-700 hover:bg-indigo-600 px-3 py-1.5 rounded-lg transition-all shadow-md"
             >
               <RefreshCw size={12} /> Refresh
             </button>

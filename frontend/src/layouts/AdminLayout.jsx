@@ -48,10 +48,10 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="h-screen flex bg-gray-50 dark:bg-gray-950">
+    <div className="h-screen flex bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 dark:bg-gray-950">
       <Sidebar mobileOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="flex-1 flex flex-col min-w-0 h-screen">
+      <div className="flex-1 flex flex-col min-w-0 h-screen bg-gradient-to-b from-slate-50 to-blue-50/30 dark:from-slate-900 dark:to-blue-950/30">
         <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-between sticky top-0 z-40" style={{ height: '70px' }}>
           <div className="flex items-center gap-4">
             <button className="lg:hidden p-2 rounded-xl text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700"

@@ -247,13 +247,13 @@ export default function DoctorDashboard() {
   }
 
   return (
-    <div className="space-y-6 pb-6">
+    <div className="space-y-6 pb-6 bg-gradient-to-b from-indigo-50/50 via-blue-50/30 to-cyan-50/50 p-6 rounded-xl">
       {/* DOCTOR INFO CARD */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-indigo-600 via-blue-600 to-teal-600 border-none rounded-2xl p-8 text-white shadow-2xl">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Welcome, Dr. {doctorProfile?.user?.name || user?.name || 'Doctor'}</h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <h2 className="text-3xl font-bold text-white">Welcome, Dr. {doctorProfile?.user?.name || user?.name || 'Doctor'}</h2>
+            <p className="text-sm text-blue-100 mt-1">
               {doctorProfile?.specialization || 'Medical Professional'} • {doctorProfile?.experience || 0} years experience
             </p>
           </div>

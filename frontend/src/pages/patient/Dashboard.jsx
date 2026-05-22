@@ -99,11 +99,11 @@ export default function PatientDashboard() {
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto bg-gradient-to-b from-cyan-50/50 via-blue-50/30 to-teal-50/50 p-6 rounded-xl">
       {/* Header */}
-      <div className="card bg-gradient-to-r from-blue-600 to-blue-800 text-white border-none shadow-lg !p-8">
+      <div className="card bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 text-white border-none shadow-2xl !p-8 rounded-2xl">
         <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.name || 'Patient'}! 👋</h1>
-        <p className="text-blue-100 mb-6 max-w-xl">
+        <p className="text-cyan-100 mb-6 max-w-xl">
           Your health dashboard is ready. {appointments.length > 0 ? `You have ${appointments.length} total appointments.` : 'You have no appointments scheduled.'}
           Your health dashboard is ready. {appointments.length > 0 ? `You have ${appointments.length} appointments.` : 'You have no appointments scheduled.'}
         </p>

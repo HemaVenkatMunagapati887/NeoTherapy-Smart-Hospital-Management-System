@@ -6,7 +6,7 @@ import {
 import { TrendingUp, Users, Calendar, Activity, Download, FileText, Loader2, RefreshCw } from 'lucide-react'
 import api from '../../services/api'
 
-const DEPT_COLORS = ['#EF4444', '#8B5CF6', '#F97316', '#EC4899', '#14B8A6', '#3B82F6', '#22C55E', '#F59E0B']
+const DEPT_COLORS = ['#1e3a8a', '#0d9488', '#0891b2', '#0284c7', '#0369a1', '#075985', '#0c3d66', '#06b6d4']
 
 const TABS = ['Monthly Trends', 'Department Visits', 'Doctor Workload']
 
@@ -166,14 +166,14 @@ export default function Reports() {
               ) : (
                 <ResponsiveContainer width="100%" height={320}>
                   <LineChart data={monthlyData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} allowDecimals={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} allowDecimals={false} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '16px' }} />
                     <Line type="monotone" dataKey="appointments" name="Appointments"
-                      stroke="#2563EB" strokeWidth={2.5}
-                      dot={{ fill: '#2563EB', r: 4 }} activeDot={{ r: 6 }} />
+                      stroke="#1e3a8a" strokeWidth={2.5}
+                      dot={{ fill: '#1e3a8a', r: 4 }} activeDot={{ r: 6 }} />
                   </LineChart>
                 </ResponsiveContainer>
               )}
@@ -232,14 +232,14 @@ export default function Reports() {
               ) : (
                 <ResponsiveContainer width="100%" height={320}>
                   <BarChart data={doctorWorkload} margin={{ top: 5, right: 20, left: 0, bottom: 60 }} barGap={4}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
-                    <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94A3B8' }} axisLine={false} tickLine={false}
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#64748b' }} axisLine={false} tickLine={false}
                       angle={-30} textAnchor="end" interval={0} />
-                    <YAxis tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} allowDecimals={false} />
+                    <YAxis tick={{ fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} allowDecimals={false} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '16px' }} />
-                    <Bar dataKey="appointments" name="Total Appointments" fill="#7C3AED" radius={[4, 4, 0, 0]} />
-                    <Bar dataKey="completed" name="Completed" fill="#2563EB" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="appointments" name="Total Appointments" fill="#0d9488" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="completed" name="Completed" fill="#1e3a8a" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               )}
